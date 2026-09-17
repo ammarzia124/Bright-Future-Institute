@@ -575,6 +575,53 @@
         </div>
     </footer>
 
+    <!-- AI Chat Widget -->
+    <div class="chat-widget" id="chat-widget">
+        <button class="chat-widget__btn" id="chat-toggle" aria-label="Open AI Assistant">
+            <i class="fas fa-robot chat-widget__icon"></i>
+            <i class="fas fa-times chat-widget__icon chat-widget__icon--close"></i>
+            <span class="chat-widget__badge" id="chat-badge">1</span>
+        </button>
+
+        <div class="chat-window" id="chat-window" role="dialog" aria-label="AI Chat Assistant" aria-hidden="true">
+            <div class="chat-window__header">
+                <div class="chat-window__header-info">
+                    <div class="chat-window__avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="chat-window__title">Institute AI Assistant</h3>
+                        <span class="chat-window__status"><span class="chat-window__status-dot"></span> Online</span>
+                    </div>
+                </div>
+                <button class="chat-window__close" id="chat-close" aria-label="Close chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="chat-window__messages" id="chat-messages">
+                <div class="chat-message chat-message--ai">
+                    <div class="chat-message__avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="chat-message__content">
+                        <p>Hello! I'm the BrightFuture Institute AI assistant. How can I help you today?</p>
+                        <span class="chat-message__time">Just now</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-window__input-area">
+                <form class="chat-window__form" id="chat-form">
+                    <input type="text" class="chat-window__input" id="chat-input" placeholder="Ask about courses, admission, fees..." autocomplete="off" aria-label="Type your message">
+                    <button type="submit" class="chat-window__send" id="chat-send" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>
