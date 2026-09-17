@@ -733,3 +733,49 @@ input, textarea {
     color: var(--text-muted);
     line-height: 1.6;
 }
+
+/* ============================================
+   Statistics Section
+   ============================================ */
+.stats {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--white);
+}
+
+.stats__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 24px 16px;
+}
+
+.stat-item__icon {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    opacity: 0.8;
+}
+
+.stat-item__number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+    display: inline;
+}
+
+.stat-item__suffix {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.stat-item__label {
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    opacity: 0.85;
+    font-weight: 400;
+}
