@@ -1,14 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Cap top (diamond) -->
-  <polygon points="32,8 58,28 32,40 6,28" fill="#6496dc"/>
-  <!-- Top surface -->
-  <polygon points="32,6 56,26 32,36 8,26" fill="#4682b4"/>
-  <!-- Band -->
-  <rect x="14" y="28" width="36" height="6" fill="#326496"/>
-  <!-- Tassel string -->
-  <line x1="32" y1="34" x2="32" y2="48" stroke="#326496" stroke-width="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="capTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90d9"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="capBand" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1d4ed8"/>
+      <stop offset="100%" style="stop-color:#1e40af"/>
+    </linearGradient>
+    <linearGradient id="tassel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Shadow/base circle -->
+  <ellipse cx="256" cy="420" rx="180" ry="20" fill="#000" opacity="0.08"/>
+  
+  <!-- Cap board (top diamond) -->
+  <g filter="url(#shadow)">
+    <polygon points="256,80 460,200 256,300 52,200" fill="url(#capTop)"/>
+    <!-- Top surface highlight -->
+    <polygon points="256,80 460,200 256,260 52,200" fill="#5b9fe6" opacity="0.3"/>
+    <!-- Left edge -->
+    <polygon points="52,200 256,300 256,260" fill="#2563eb" opacity="0.4"/>
+    <!-- Right edge -->
+    <polygon points="460,200 256,300 256,260" fill="#1d4ed8" opacity="0.3"/>
+  </g>
+  
+  <!-- Band/cap base -->
+  <rect x="130" y="220" width="252" height="50" rx="4" fill="url(#capBand)"/>
+  <!-- Band highlight -->
+  <rect x="130" y="220" width="252" height="15" rx="4" fill="#3b82f6" opacity="0.3"/>
+  
+  <!-- Button on top -->
+  <circle cx="256" cy="245" r="10" fill="#fbbf24"/>
+  
+  <!-- Tassel cord -->
+  <path d="M256,245 Q280,280 310,340 Q330,380 340,420" stroke="#fbbf24" stroke-width="4" fill="none" stroke-linecap="round"/>
+  
   <!-- Tassel -->
-  <polygon points="32,46 28,56 36,56" fill="#4682b4"/>
-  <!-- Tassel circle -->
-  <circle cx="32" cy="33" r="2" fill="#326496"/>
+  <g>
+    <ellipse cx="340" cy="430" rx="18" ry="8" fill="#f59e0b"/>
+    <rect x="328" y="430" width="24" height="35" rx="4" fill="url(#tassel)"/>
+    <rect x="332" y="465" width="4" height="12" rx="2" fill="#f59e0b"/>
+    <rect x="338" y="465" width="4" height="15" rx="2" fill="#f59e0b"/>
+    <rect x="344" y="465" width="4" height="12" rx="2" fill="#f59e0b"/>
+  </g>
 </svg>
