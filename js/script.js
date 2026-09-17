@@ -410,44 +410,28 @@
     }
 
     /* ----------------------------------------
-       AI Agent Integration Point
-
-       !! IMPORTANT !!
-       Replace the mock implementation below
-       with your actual AI Agent API call.
-
-       See the sendMessageToAI() function for
-       the integration endpoint.
+       AI Agent Integration — n8n Webhook
        ---------------------------------------- */
 
-    /**
-     * Sends a message to the AI Agent API.
-     *
-     * INTEGRATION INSTRUCTIONS:
-     * 1. Replace AI_AGENT_API with your actual endpoint URL
-     * 2. Adjust the request body format to match your API's expected payload
-     * 3. Adjust the response parsing to match your API's response format
-     * 4. Add any required headers (API keys, auth tokens, etc.)
-     */
-    var AI_AGENT_API = 'YOUR_AI_AGENT_ENDPOINT';
+    var AI_AGENT_API = 'https://zia124.app.n8n.cloud/webhook/3bfa2ac3-ba46-4248-9923-24d7a4de0726/chat';
+    var chatSessionId = crypto.randomUUID();
 
     async function sendMessageToAI(message) {
-        // TODO: Replace this mock response with your real AI Agent API call.
-        return new Promise(function (resolve) {
-            setTimeout(function () {
-                var responses = [
-                    "Thanks for your question! Our AI assistant will provide the relevant institute information.",
-                    "BrightFuture Institute offers programs in Web Development, AI, Networking, Cybersecurity, Graphic Design, and Digital Marketing.",
-                    "Our courses range from 4 to 8 months. Contact us at +1 (555) 123-4567 for more details.",
-                    "You can enroll by visiting our institute or filling out the contact form on our website.",
-                    "We offer career guidance, resume workshops, and job placement assistance for all graduates.",
-                    "Our opening hours are Monday to Saturday, 8:00 AM to 6:00 PM.",
-                    "Tuition fees vary by program. Please contact our admissions team for detailed pricing information."
-                ];
-                var randomResponse = responses[Math.floor(Math.random() * responses.length)];
-                resolve(randomResponse);
-            }, 1200);
+        var response = await fetch(AI_AGENT_API + '?action=sendMessage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chatInput: message,
+                sessionId: chatSessionId
+            })
         });
+
+        if (!response.ok) {
+            throw new Error('n8n webhook request failed with status: ' + response.status);
+        }
+
+        var data = await response.json();
+        return data.output || data.text || data.chatOutput || JSON.stringify(data);
     }
 
     /* ----------------------------------------
